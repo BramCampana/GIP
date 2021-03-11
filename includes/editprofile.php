@@ -16,14 +16,22 @@
  $sql = mysqli_query($conn,$select);
  $row = mysqli_fetch_assoc($sql);
 
- $sql = "UPDATE `registration` SET `firstname` = '$firstname', `lastname` = '$lastname', `email` = '$mail' WHERE `id` = '$id' ";
- mysqli_query($conn,$sql);
+ $sql = "UPDATE `registration` SET `firstname` = '$firstname', `lastname` = '$lastname', `email` = '$mail', `tel` = '$telnr'  WHERE `id` = '$id' ";
+ mysqli_query($conn, $sql);
+
+ $_SESSION['firstname'] = $firstname;
+ $_SESSION['lastname'] = $lastname;
+ $_SESSION['email'] = $mail;
+ $_SESSION['telnr'] = $telnr;
+ $_SESSION['id'] = $id;
 
  $response[] = $firstname;
  $response[] = $lastname;
  $response[] = $telnr;
  $response[] = $mail;
  $response[] = $id;
+
+
 
 
  echo json_encode($response);

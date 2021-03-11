@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 $firstname = $_SESSION['firstname'];
 $lastname = $_SESSION['lastname'];
 $telnr = $_SESSION['telnr'];
@@ -70,9 +71,9 @@ $('#editprofile').on('submit', function(event){
       dataType: 'json',
       processData: false,
       success: function(data){
-        // if (data[1] === 'yes') {
-        //   window.location.replace('./profile.php')
-        // }console.log();
+        if (data[1] === 'yes') {
+          window.location.replace('./profile.php')
+        }
         console.log(data);
       }
     })
