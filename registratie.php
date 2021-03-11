@@ -120,9 +120,10 @@ if(isset($_POST['submit']) ) {
         dataType: 'json',
         processData: false,
         success: function(data){
-          if (data[1] === 'yes') {
+					console.log(data);
+          	if (data[1] === 'yes') {
           	window.location.replace('./index.php')
-          }console.log();
+         }
 
         }
       })
