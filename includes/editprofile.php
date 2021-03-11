@@ -1,37 +1,31 @@
 <?php
 
  session_start();
- include "Connection.php";
- if(isset($_POST['edit']))
- {
-    $id=$_SESSION['id'];
-    $fname=$_POST['fname'];
-    $lname=$_POST['lname'];
-    $email=$_POST['email'];
-    $select= "select * from users where id='$id'";
-    $sql = mysqli_query($conn,$select);
-    $row = mysqli_fetch_assoc($sql);
-    $res= $row['id'];
-    if($res === $id)
-    {
+ $path = $_SERVER['DOCUMENT_ROOT'];
+ include $path.'./includes/dbh.php';
 
-       $update = "update users set fname='$fname',lname='$lname',email='$email' where id='$id'";
-       $sql2=mysqli_query($conn,$update);
-if($sql2)
-       {
-           /*Successful*/
-           header('location:Dashboard.php');
-       }
-       else
-       {
-           /*sorry your profile is not update*/
-           header('location:Profile_edit_form.php');
-       }
-    }
-    else
-    {
-        /*sorry your id is not match*/
-        header('location:Profile_edit_form.php');
-    }
- }
+ $response = array();
+
+ $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+ $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
+ $telnr = mysqli_real_escape_string($conn, $_POST['telnr']);
+ $mail = mysqli_real_escape_string($conn, $_POST['mail']);
+ $id = mysqli_real_escape_string($conn, $_POST['id']);
+
+
+ $sql = mysqli_query($conn,$select);
+ $row = mysqli_fetch_assoc($sql);
+
+ $sql = "UPDATE `registration` SET `firstname` = '$firstname', `lastname` = '$lastname', `email` = '$mail' WHERE `id` = '$id' ";
+ mysqli_query($conn,$sql);
+
+ $response[] = $firstname;
+ $response[] = $lastname;
+ $response[] = $telnr;
+ $response[] = $mail;
+ $response[] = $id;
+
+
+ echo json_encode($response);
+
 ?>

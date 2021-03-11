@@ -4,6 +4,7 @@ $firstname = $_SESSION['firstname'];
 $lastname = $_SESSION['lastname'];
 $telnr = $_SESSION['telnr'];
 $mail = $_SESSION['email'];
+$id = $_SESSION['id'];
 $function = $_SESSION['function'];
 $path = $_SERVER['DOCUMENT_ROOT'];
 include $path.'/includes/dbh.php';
@@ -28,7 +29,8 @@ include $path.'/includes/dbh.php';
       <header class="intro">
         <div class="inputBox">
           <div class="inputs">
-            <form method="post" id='createForm' action="" >
+            <form method="post" id='editprofile' action="" >
+              <input class="input" type="hidden" name="id" autocomplete="off" value="<?php echo @$id; ?>" >
               <div>
                 <input class="input" placeholder="Firstname" type="text" name="firstname" autocomplete="off" value="<?php echo @$firstname; ?>" >
               </div>
@@ -56,4 +58,24 @@ include $path.'/includes/dbh.php';
       </header>
 
   </body>
+<script type="text/javascript">
+$('#editprofile').on('submit', function(event){
+    event.preventDefault();
+    console.log('profiel aanpassen');
+    $.ajax({
+      url: "./includes/editprofile.php",
+      method:"POST",
+      data: new FormData(this),
+      contentType: false,
+      dataType: 'json',
+      processData: false,
+      success: function(data){
+        // if (data[1] === 'yes') {
+        //   window.location.replace('./profile.php')
+        // }console.log();
+        console.log(data);
+      }
+    })
+  })
+</script>
 </html>
