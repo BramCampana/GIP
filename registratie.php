@@ -119,9 +119,9 @@ if(isset($_POST['submit']) ) {
         processData: false,
         success: function(data){
 					console.log(data);
-        //  if (data[1] === 'yes') {
-          //	window.location.replace('./index.php')
-        //  }
+          	if (data[1] === 'yes') {
+          	window.location.replace('./index.php')
+         }
 
         }
       })
