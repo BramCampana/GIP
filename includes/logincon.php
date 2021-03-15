@@ -17,6 +17,7 @@ if (password_verify($password, $row['password'])) {
   $_SESSION['lastname'] = $row['lastname'];
   $_SESSION['email'] = $row['email'];
   $_SESSION['telnr'] = $row['tel'];
+  $_SESSION['id'] = $row['id'];
 
 
   $Array[0] = 'dgdg';
