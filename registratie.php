@@ -4,6 +4,8 @@ $user = $_SESSION['user'];
 $user = $_SERVER['DOCUMENT_ROOT'];
 include $path.'/includes/dbh.php';
 
+// dit is een test
+
 //Linken naar bestanden om qr code te maken.
 include('libs/phpqrcode/qrlib.php');
 
