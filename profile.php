@@ -51,6 +51,11 @@ include $path.'/includes/dbh.php';
               <div class="radio-tile-group">
                 <input id="Submit" class="radio-tile-label input-container radio-button" value="save" type="submit" name="submit" />
               </div>
+                <a href="./delete.php">Delete account?</a>
+            </div>
+            </div>
+
+            </div>
 
             </div>
             </form>
