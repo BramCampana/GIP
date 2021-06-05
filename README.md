@@ -1,4 +1,4 @@
-# SmartCheck
+# Smartcheck
 Voor het behalen van een diploma in het zesde jaar van het secundair onderwijs, richting Industriële ICT, is het maken van een geïntegreerde proef een vereiste. Hier vindt u de code van de website.
 
 # Doel project:
